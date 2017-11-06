@@ -66,7 +66,7 @@ class BBCON:
         self.update_motobs()
 
         #Pause
-        time.sleep(2.5)
+        time.sleep(3.5)
 
         #Reset sensobs
         self.reset_sensobs()
