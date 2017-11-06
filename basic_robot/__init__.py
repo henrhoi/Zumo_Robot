@@ -8,7 +8,6 @@ from ultrasonic import Ultrasonic
 from zumo_button import ZumoButton
 
 
-
 if __name__ == '__main__':
     ZumoButton().wait_for_press()
 
