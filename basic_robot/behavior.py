@@ -12,7 +12,7 @@ class Behavior:
         self.halt_request = None
         self.priority = 0 # Viktigheten av denne behavior
         self.match_degree = 0 #Et tall mellom 0 og 1
-        self.weight = self.priority * self.match_degree
+        self.weight = 0 #priority * matchdegree
 
     @abstractmethod
     def consider_deactivation(self):
@@ -62,6 +62,7 @@ class Follow_Line(Behavior):
     def update(self):
         self.consider_activation() # Activity flag settes i BBCON
         self.sense_and_act()
+        self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
         #Hvis sensorene til venstre gir "mørkt" sving venstre
@@ -115,11 +116,53 @@ class Avoid_Collison(Behavior):
 
         #Kjører kun hvis activeflag er True
         self.sense_and_act()
+        self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
         self.motor_recommendations = ["s"] #Hvis metoden kjører betyr det vi må stoppe
         #Kan stoppe å ta et bilde feks?
         self.priority = 0.9
         self.match_degree = 0.9
+
+
+class TakePicture(Behavior):
+
+    #Legg in slik at den tar bilde når den stopper?
+    #Bruk Camera
+
+    def __init__(self,bbcon,sensobs):
+        Behavior.__init__(self,bbcon,sensobs)
+
+    def consider_activation(self):
+        #Skal arbitrator gi beskjed når den har stoppet?
+
+    def consider_deactivation(self):
+        return not self.consider_activation()
+
+    def update(self):
+        self.consider_activation()
+
+        if not self.active_flag:
+            self.weight = 0
+            return
+
+        self.sense_and_act()
+
+        self.weight = self.priority * self.match_degree
+
+    def sense_and_act(self):
+        #Motoren er stoppet?
+
+        image = self.sensobs.value
+
+
+
+
+
+
+
+
+
+
 
 
