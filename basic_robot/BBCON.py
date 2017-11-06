@@ -1,6 +1,6 @@
 from basic_robot import arbitrator
 import time
-#
+__authors__ = "Henrik Høiness og Kristoffer Gjerde"
 class BBCON:
 
     def __init__(self):
@@ -51,6 +51,7 @@ class BBCON:
         for motob in self.motobs:
             motob.update()
 
+
     def run_one_timestep(self):
         #Update sensobs
         self.update_sensobs()
@@ -68,8 +69,8 @@ class BBCON:
         time.sleep(0.5)
 
         #Reset sensobs
+        self.reset_sensobs()
 
-        pass
-#hellu
+
 
 

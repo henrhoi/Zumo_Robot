@@ -1,4 +1,4 @@
-sjef  = "Kristoffer Gjerde"
+__author__  = "Kristoffer Gjerde"
 from random import randint
 
 class Arbitrator:

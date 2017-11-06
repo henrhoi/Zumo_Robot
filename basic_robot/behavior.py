@@ -24,7 +24,4 @@ class Behavior:
 
     def sense_and_act(self):
         pass
-<<<<<<< HEAD
 
-=======
->>>>>>> 2a8eed3cc5564b49ea290990edb61a921e2a8121

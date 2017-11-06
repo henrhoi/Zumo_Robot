@@ -1,8 +1,8 @@
 from abc import abstractmethod
 
-oversjef = "Henrik"
+__author__ = "Henrik"
 
-from basic_robot.SensorWrappers import camera,irproximity_sensor,reflectance_sensors
+from basic_robot.SensorWrappers import camera, irproximity_sensor, reflectance_sensors
 
 
 class Sensob:
@@ -28,6 +28,8 @@ class Camera_Sensob(Sensob):
         self.camera = camera.Camera()
 
     def update(self):
+        # Value blir imagefil
+
         self.value = self.camera.update()
         return self.value
 
@@ -40,6 +42,8 @@ class IR_Sensob(Sensob):
         self.value = None
 
     def update(self):
+        # Value = True/False
+
         self.value = self.IR.update()
         return self.value
 
@@ -52,6 +56,8 @@ class Reflectance_Sensob(Sensob):
         self.value = None
 
     def update(self):
+        # Value blir [X,X,X,X,X,X] der X-->0 betyr mørkt og X-->1 betyr lyst
+
         self.value = self.reflectance.update()
         return self.value
 
