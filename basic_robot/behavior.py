@@ -135,6 +135,7 @@ class TakePicture(Behavior):
 
     def consider_activation(self):
         #Skal arbitrator gi beskjed når den har stoppet?
+        pass
 
     def consider_deactivation(self):
         return not self.consider_activation()
@@ -155,7 +156,38 @@ class TakePicture(Behavior):
 
         image = self.sensobs.value
 
+class RUN(Behavior):
 
+    #Bruker IRProxity sensor
+
+    def __init__(self,bbcon,sensobs):
+        Behavior.__init__(self,bbcon,sensobs)
+
+    def consider_activation(self):
+        should_activate = self.sensobs.value[0] or self.sensobs.value[1]
+        if should_activate: self.bbcon.active_behavior(self)
+        else: self.bbcon.deactivate_behavior(self)
+        return should_activate
+
+    def consider_deactivation(self):
+        return not self.consider_activation()
+
+
+    def update(self):
+        self.consider_activation()
+
+        if not self.active_flag:
+            self.weight = 0
+            return
+
+        self.sense_and_act()
+        self.weight = self.priority * self.match_degree
+
+    def sense_and_act(self):
+        #Active flag er True
+        self.motor_recommendations = ["f"]
+        self.match_degree = 0.9
+        self.priority = 0.4
 
 
 
