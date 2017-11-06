@@ -2,7 +2,7 @@ from abc import abstractmethod
 
 __author__ = "Henrik"
 
-from basic_robot.SensorWrappers import camera, irproximity_sensor, reflectance_sensors
+from basic_robot.SensorWrappers import camera, irproximity_sensor, reflectance_sensors, ultrasonic
 
 
 class Sensob:
@@ -47,6 +47,16 @@ class IR_Sensob(Sensob):
         self.value = self.IR.update()
         return self.value
 
+class Ultrasonic_Sensob(Sensob):
+
+    def __init__(self):
+        Sensob.__init__(self)
+        self.ultrasonic = ultrasonic.Ultrasonic()
+        self.value = None
+
+    def update(self):
+        self.value = self.ultrasonic.update()
+        return self.value
 
 class Reflectance_Sensob(Sensob):
 
