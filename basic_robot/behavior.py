@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-_author_ = "William Kvaale"
+_author_ = "Kristoffer Gjerde"
 
 class Behavior:
 

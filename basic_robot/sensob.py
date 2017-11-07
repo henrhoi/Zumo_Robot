@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-__author__ = "Henrik"
+__author__ = "Henrik Høiness"
 
 from basic_robot.SensorWrappers import camera, irproximity_sensor, reflectance_sensors, ultrasonic
 

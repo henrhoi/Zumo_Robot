@@ -7,6 +7,7 @@ from motors import Motors
 from ultrasonic import Ultrasonic
 from zumo_button import ZumoButton
 
+__authors__ = "Henrik Høiness og Kristoffer Gjerde"
 
 if __name__ == '__main__':
     ZumoButton().wait_for_press()
