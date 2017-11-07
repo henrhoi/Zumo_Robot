@@ -11,7 +11,7 @@ class Motob:
     def __init__(self):
         self.motor = Motors()  # Initializing Motors, which motob will make decisions for
         self.value = []  # a holder of the most recent motor recommendation sent to the motob
-        #value format [direction,speed,duration]
+        #  value format [direction,speed,duration]
 
     def update(self, mr):
         # Receive a motor recommendation (mr), load into value, and operationalize!
