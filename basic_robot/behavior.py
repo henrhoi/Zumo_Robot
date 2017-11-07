@@ -5,6 +5,8 @@ _author_ = "Kristoffer Gjerde"
 
 """
 TODO: fix each behavior to set motor_recomendation to appropiate format [direction,speed,duration]
++ add behavior for taking picture
++ stop then take picture then deside if picture is red or not? if red Run?
 """
 
 
