@@ -13,10 +13,10 @@ sftp robot@rpi-13.idi.ntnu.no: get or put
   
 ```
 
-    - Download:
-      - *get* filename.*
-    - Upload:
-      - *put* filename.*
+  - Download:
+    - *get* filename.*
+  - Upload:
+    - *put* filename.*
 
 
 
