@@ -2,6 +2,12 @@ from abc import abstractmethod
 
 _author_ = "Kristoffer Gjerde"
 
+
+"""
+TODO: fix each behavior to set motor_recomendation to appropiate format [direction,speed,duration]
+"""
+
+
 class Behavior:
 
     def __init__(self, bbcon,sensobs):
