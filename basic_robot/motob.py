@@ -30,5 +30,6 @@ class Motob:
                 motor.right(val[1], val[2])
             elif val[0] == 'L':
                 motor.left(val[1], val[2])
-
+            elif val[0] == "S":
+                motor.stop()
 
