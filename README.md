@@ -9,19 +9,13 @@ ssh robot@rpi-13.idi.ntnu.no
 
 Downloading/Upload files:
 ```
-sftp robot@rpi-13.idi.ntnu.no
-
-- Download:
-  *get filename.**
-
-- Upload:
-  *put filename.**
+sftp robot@rpi-13.idi.ntnu.no: get or put
   
 ```
-###Example
- - Item 1
- - Item 2
-  - Sub Item 1
-  - Sub Item 2
+
+- Download:
+  - *get* filename.*
+- Upload:
+  - *put* filename.*
 
 Av William Kvaale, Kristoffer Gjerde, Vilde Arntzen og Henrik Høiness
