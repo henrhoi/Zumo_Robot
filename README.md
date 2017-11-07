@@ -16,6 +16,11 @@ sftp robot@rpi-13.idi.ntnu.no
 
 * Upload:
   * put filename.*
+  ###Example
+ - Item 1
+ - Item 2
+  - Sub Item 1
+  - Sub Item 2
 ```
 ###Example
  - Item 1
