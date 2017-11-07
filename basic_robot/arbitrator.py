@@ -39,8 +39,6 @@ class Arbitrator:
                 res = x
         return self.bbcon.active_behaviors[res].motor_recommendations
 
-ar = Arbitrator("xx",True)
-ar.deterministisk_valg()
 
 
 
