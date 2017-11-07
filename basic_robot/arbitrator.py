@@ -1,5 +1,5 @@
 __author__  = "Kristoffer Gjerde"
-from random import randint
+from random import uniform
 
 
 #Implement haltrequest?
@@ -28,10 +28,10 @@ class Arbitrator:
         start = 0
         ranged = []
         for weight in liste:
-            weight = 10 * weight + start
-            ranged.append(range(int(start), int(weight)))
-            start = int(weight)
-        random = randint(0, ranged[-1][-1])
+            weight = weight + start
+            ranged.append(set(x / 1000 for x in range(int(start * 1000), int(weight * 1000))))
+            start = weight
+        random = round(uniform(0, sum(liste) - 0.001), 2)
 
         res = 0
         for x in range(len(ranged)):
