@@ -1,7 +1,3 @@
-from time import sleep
-import random
-import imager2 as IMR
-from motors import Motors
 import SensorWrappers.zumo_button as button
 from sensob import IR_Sensob,Camera_Sensob,Ultrasonic_Sensob,Reflectance_Sensob
 from behavior import Follow_Line,Avoid_Collison

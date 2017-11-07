@@ -49,8 +49,8 @@ class BBCON:
         for behaviour in self.behaviors:
             behaviour.update()
 
-    def update_motobs(self):
-        self.motobs.update()
+    def update_motobs(self,action):
+        self.motobs.update(action)
 
 
     def run_one_timestep(self):
