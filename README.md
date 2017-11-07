@@ -11,16 +11,12 @@ Downloading/Upload files:
 ```
 sftp robot@rpi-13.idi.ntnu.no
 
-* Download:
-  * get filename.*
+- Download:
+  *get filename.**
 
-* Upload:
-  * put filename.*
-  ###Example
- - Item 1
- - Item 2
-  - Sub Item 1
-  - Sub Item 2
+- Upload:
+  *put filename.**
+  
 ```
 ###Example
  - Item 1
