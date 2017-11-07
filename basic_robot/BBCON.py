@@ -1,5 +1,7 @@
 from basic_robot import arbitrator
 import time
+from arbitrator import Arbitrator
+from motob import Motob
 __authors__ = "Henrik Høiness og Kristoffer Gjerde"
 class BBCON:
 
@@ -7,8 +9,8 @@ class BBCON:
         self.behaviors = [] #En liste av alle behavior objektene som brukes av BBCON
         self.active_behaviors = [] #En liste med de aktive behavior objektene
         self.sensobs = [] #En liste av alle sensorobjektene som brukes av BBCON
-        self.motobs = [] #En liste ac alle motor objektene som brukes av BBCON
-        self.arbitrator = arbitrator.Arbitrator() #Arbitratoren som skal løse requests fra behaviors
+        self.motobs = Motob() #En liste ac alle motor objektene som brukes av BBCON
+        self.arbitrator = Arbitrator() #Arbitratoren som skal løse requests fra behaviors
 
         #Andre variabler kan være current_timestep, inaktive behaviors og roboten selv
 
@@ -44,12 +46,11 @@ class BBCON:
 
     # Oppdatere behaviours
     def update_behaviours(self):
-        for behaviour in self.active_behaviors:
+        for behaviour in self.behaviors:
             behaviour.update()
 
     def update_motobs(self):
-        for motob in self.motobs:
-            motob.update()
+        self.motobs.update()
 
 
     def run_one_timestep(self):
