@@ -60,10 +60,10 @@ class BBCON:
         self.update_behaviours()
 
         #Call arbitrator.choose_action
-        self.arbitrator.choose_action()
+        action = self.arbitrator.choose_action()
 
         #Update motobs
-        self.update_motobs()
+        self.update_motobs(action)
 
         #Pause
         time.sleep(0.5)
