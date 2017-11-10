@@ -1,5 +1,7 @@
 basicrobot/.idea/*
-
+.DS_Store
+.idea/*
+.idea/
 *.xml
 *.iml
 Icon
