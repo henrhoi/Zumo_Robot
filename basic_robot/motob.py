@@ -1,5 +1,5 @@
 __author__ = 'William Kvaale'
-from basic_robot.motors import Motors
+from motors import Motors
 
 # The Arbitrator will decide which motobs that will be executed
 # Motobs tell the Motors what to do

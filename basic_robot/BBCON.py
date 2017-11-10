@@ -1,4 +1,3 @@
-from basic_robot import arbitrator
 import time
 from arbitrator import Arbitrator
 from motob import Motob
