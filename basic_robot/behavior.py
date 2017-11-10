@@ -78,16 +78,16 @@ class Follow_Line(Behavior):
         sensor_array = self.sensobs
         if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
             #Kjør framover
-            self.motor_recommendations = ["f"] #Move forward
+            self.motor_recommendations = ["F",0.25,1] #Move forward
         elif sensor_array[0] < self.threshold:
             #Sving venstre
-            self.motor_recommendations = ["l"] #Move left
+            self.motor_recommendations = ["L",0.25,1] #Move left
             self.match_degree = 0.9
         elif sensor_array[5] < self.threshold:
             #Sving høyre
-            self.motor_recommendations = ["r"] #Move right
+            self.motor_recommendations = ["R",0.25,1] #Move right
         else:
-            self.motor_recommendations = ["f"]
+            self.motor_recommendations = ["F",0.25,1]
             self.match_degree = 0.5
 
         self.priority = 0.5
@@ -127,7 +127,7 @@ class Avoid_Collison(Behavior):
         self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
-        self.motor_recommendations = ["s"] #Hvis metoden kjører betyr det vi må stoppe
+        self.motor_recommendations = ["S"] #Hvis metoden kjører betyr det vi må stoppe
         #Kan stoppe å ta et bilde feks?
         self.priority = 0.9
         self.match_degree = 0.9
@@ -193,7 +193,7 @@ class RUN(Behavior):
 
     def sense_and_act(self):
         #Active flag er True
-        self.motor_recommendations = ["f"]
+        self.motor_recommendations = ["F",0.25,1]
         self.match_degree = 0.9
         self.priority = 0.4
 
