@@ -9,13 +9,13 @@ class BBCON:
         self.active_behaviors = [] #En liste med de aktive behavior objektene
         self.sensobs = [] #En liste av alle sensorobjektene som brukes av BBCON
         self.motobs = Motob() #En liste ac alle motor objektene som brukes av BBCON
-        self.arbitrator = Arbitrator(True) #Arbitratoren som skal løse requests fra behaviors
+        self.arbitrator = Arbitrator(self,True) #Arbitratoren som skal løse requests fra behaviors
 
         #Andre variabler kan være current_timestep, inaktive behaviors og roboten selv
 
 
     def add_behavior(self,behavior):
-        if behavior not in behavior:
+        if behavior not in self.behaviors:
             self.behaviors.append(behavior)
 
     def add_sensob(self,sensor):
@@ -44,9 +44,9 @@ class BBCON:
 
 
     # Oppdatere behaviours
-    def update_behaviours(self):
-        for behaviour in self.behaviors:
-            behaviour.update()
+    def update_behaviors(self):
+        for behavior in self.behaviors:
+            behavior.update()
 
     def update_motobs(self,action):
         self.motobs.update(action)
@@ -57,10 +57,11 @@ class BBCON:
         self.update_sensobs()
 
         #Update behaviors
-        self.update_behaviours()
+        self.update_behaviors()
 
         #Call arbitrator.choose_action
         action = self.arbitrator.choose_action()
+        print(action)
 
         #Update motobs
         self.update_motobs(action)
