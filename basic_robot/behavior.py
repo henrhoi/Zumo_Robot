@@ -57,9 +57,9 @@ class Follow_Line(Behavior):
 
     def consider_activation(self):
         reflectance_sensor = self.sensobs #Hvis vi bare sender inn RS som sensob
-        for sensor_verdi in reflectance_sensor: #Antar at de er oppdatert før denne kalles.
+        for sensor_verdi in reflectance_sensor.value: #Antar at de er oppdatert før denne kalles.
             if sensor_verdi < self.threshold:
-                self.bbcon.active_behavior(self)
+                self.bbcon.activate_behavior(self)
                 return True
 
         #Hvis ikke
@@ -75,23 +75,26 @@ class Follow_Line(Behavior):
     def sense_and_act(self):
         #Hvis sensorene til venstre gir "mørkt" sving venstre
         #Hvis sensorene til høyre gir "mørkt" sving høyre
-        sensor_array = self.sensobs
+        print(self.active_flag)
+        sensor_array = self.sensobs.value
+        print(sensor_array)
         if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
+            print("kugggg")
             #Kjør framover
-            self.motor_recommendations = ["f"] #Move forward
+            self.motor_recommendations = ["F",0.5,1] #Move forward
         elif sensor_array[0] < self.threshold:
             #Sving venstre
-            self.motor_recommendations = ["l"] #Move left
+            self.motor_recommendations = ["L",0.25,1] #Move left
             self.match_degree = 0.9
         elif sensor_array[5] < self.threshold:
             #Sving høyre
-            self.motor_recommendations = ["r"] #Move right
+            self.motor_recommendations = ["R",0.25,1] #Move right
         else:
-            self.motor_recommendations = ["f"]
+            self.motor_recommendations = ["F",0.25,1]
+            print("ooo")
             self.match_degree = 0.5
 
         self.priority = 0.5
-
 
 
 class Avoid_Collison(Behavior):
@@ -106,7 +109,7 @@ class Avoid_Collison(Behavior):
         less_than_threshold = self.sensobs.value < self.threshold
 
         if less_than_threshold:
-            self.bbcon.active_behavior(self)
+            self.bbcon.activate_behavior(self)
         else:
             self.bbcon.deactivate_behavior(self)
 
@@ -127,7 +130,7 @@ class Avoid_Collison(Behavior):
         self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
-        self.motor_recommendations = ["s"] #Hvis metoden kjører betyr det vi må stoppe
+        self.motor_recommendations = ["S"] #Hvis metoden kjører betyr det vi må stoppe
         #Kan stoppe å ta et bilde feks?
         self.priority = 0.9
         self.match_degree = 0.9
@@ -173,7 +176,7 @@ class RUN(Behavior):
 
     def consider_activation(self):
         should_activate = self.sensobs.value[0] or self.sensobs.value[1]
-        if should_activate: self.bbcon.active_behavior(self)
+        if should_activate: self.bbcon.activate_behavior(self)
         else: self.bbcon.deactivate_behavior(self)
         return should_activate
 
@@ -193,7 +196,7 @@ class RUN(Behavior):
 
     def sense_and_act(self):
         #Active flag er True
-        self.motor_recommendations = ["f"]
+        self.motor_recommendations = ["F",0.25,1]
         self.match_degree = 0.9
         self.priority = 0.4
 

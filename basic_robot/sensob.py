@@ -2,7 +2,7 @@ from abc import abstractmethod
 
 __author__ = "Henrik Høiness"
 
-from basic_robot.SensorWrappers import camera, irproximity_sensor, reflectance_sensors, ultrasonic
+from SensorWrappers import camera, irproximity_sensor, reflectance_sensors, ultrasonic
 
 
 class Sensob:
@@ -29,8 +29,8 @@ class Camera_Sensob(Sensob):
 
     def update(self):
         # Value blir imagefil
-
-        self.value = self.camera.update()
+        self.camera.update()
+        self.value = self.camera.get_value()
         return self.value
 
 
@@ -44,7 +44,8 @@ class IR_Sensob(Sensob):
     def update(self):
         # Value = True/False
 
-        self.value = self.IR.update()
+        self.IR.update()
+        self.value = self.IR.get_value()
         return self.value
 
 class Ultrasonic_Sensob(Sensob):
@@ -55,7 +56,8 @@ class Ultrasonic_Sensob(Sensob):
         self.value = None
 
     def update(self):
-        self.value = self.ultrasonic.update()
+        self.ultrasonic.update()
+        self.value = self.ultrasonic.get_value()
         return self.value
 
 class Reflectance_Sensob(Sensob):
@@ -68,7 +70,8 @@ class Reflectance_Sensob(Sensob):
     def update(self):
         # Value blir [X,X,X,X,X,X] der X-->0 betyr mørkt og X-->1 betyr lyst
 
-        self.value = self.reflectance.update()
+        self.reflectance.update()
+        self.value = self.reflectance.get_value()
         return self.value
 
 

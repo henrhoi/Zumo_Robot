@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 
+
 #Hver side av roboten har en proximity sensor. Er True hvis et object er nærmere enn 5 cm (3cm). False ellers
 class IRProximitySensor:
     def __init__(self):
