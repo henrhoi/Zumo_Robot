@@ -10,7 +10,6 @@ ssh robot@rpi-13.idi.ntnu.no
 Downloading/Upload files:
 ```
 sftp robot@rpi-13.idi.ntnu.no: get or put
-  
 ```
 
   - Download:
