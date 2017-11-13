@@ -27,10 +27,10 @@ def main():
 
     #Behaviors
     follow_line = Follow_Line(bbcon,Reflect)
-    avoid_collison = Avoid_Collison(bbcon,Ultra)
+    turn_around = Turn(bbcon,IR_Sensob)
 
     bbcon.add_behavior(follow_line)
-    bbcon.add_behavior(avoid_collison)
+    bbcon.add_behavior(turn_around)
 
     while True:
        print("one timestep")

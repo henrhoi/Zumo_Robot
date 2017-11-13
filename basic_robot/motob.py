@@ -37,4 +37,6 @@ class Motob:
             motor.left(val[1], val[2])
         elif val[0] == "S":
             motor.stop()
+        elif val[0] == "T":
+            motor.turn()
 

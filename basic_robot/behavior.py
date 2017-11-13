@@ -108,7 +108,9 @@ class Turn(Behavior):
         self.value = False
 
     def consider_activation(self):
-        return self.sensobs.value
+        if self.sensobs.value:
+            self.bbcon.activate_behavior(self)
+            return True
 
     def consider_deactivation(self):
         return not self.consider_activation()
@@ -125,8 +127,7 @@ class Turn(Behavior):
         self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
-        self.motor_recommendations = ["S"] #Hvis metoden kjører betyr det vi må stoppe
-        #Kan stoppe å ta et bilde feks?
+        self.motor_recommendations = ["T"] #Turn arround
         self.priority = 0.9
         self.match_degree = 0.9
 
