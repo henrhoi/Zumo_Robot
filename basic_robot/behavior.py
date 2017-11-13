@@ -42,6 +42,11 @@ class Behavior:
         #Bruker sensob readings for å lage motor recommendations (og halt_requet?..)
         return
 
+    def __repr__(self):
+        return str(type(self))
+
+    def __str__(self):
+        return str(type(self))
 
 class Follow_Line(Behavior):
 
@@ -77,6 +82,10 @@ class Follow_Line(Behavior):
         #Hvis sensorene til høyre gir "mørkt" sving høyre
         sensor_array = self.sensobs.value
         if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
+<<<<<<< HEAD
+=======
+
+>>>>>>> b9e995b63a7497a2c3f9f109a863cb6a6e2b244f
             #Kjør framover
             self.motor_recommendations = ["F",0.5,1] #Move forward
         elif sensor_array[0] < self.threshold:
@@ -88,7 +97,11 @@ class Follow_Line(Behavior):
             self.motor_recommendations = ["R",0.25,1] #Move right
         else:
             self.motor_recommendations = ["F",0.25,1]
+<<<<<<< HEAD
            self.match_degree = 0.5
+=======
+            self.match_degree = 0.5
+>>>>>>> b9e995b63a7497a2c3f9f109a863cb6a6e2b244f
 
         self.priority = 0.5
 

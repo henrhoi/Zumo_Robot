@@ -31,6 +31,7 @@ class Camera_Sensob(Sensob):
         # Value blir imagefil
         self.camera.update()
         self.value = self.camera.get_value()
+        print("Camera: ")
         return self.value
 
 
@@ -46,6 +47,7 @@ class IR_Sensob(Sensob):
 
         self.IR.update()
         self.value = self.IR.get_value()
+        print("IR_sensor: " + str(self.value))
         return self.value
 
 class Ultrasonic_Sensob(Sensob):
@@ -58,6 +60,7 @@ class Ultrasonic_Sensob(Sensob):
     def update(self):
         self.ultrasonic.update()
         self.value = self.ultrasonic.get_value()
+        print("Ultrasonic: " + str(self.value))
         return self.value
 
 class Reflectance_Sensob(Sensob):
@@ -72,6 +75,7 @@ class Reflectance_Sensob(Sensob):
 
         self.reflectance.update()
         self.value = self.reflectance.get_value()
+        print("Reflect: " + str(self.value))
         return self.value
 
 

@@ -7,14 +7,6 @@ __authors__ = "Henrik Høiness og Kristoffer Gjerde"
 
 def main():
 
-    m = Motors()
-    m.forward(.5,1)
-    m.backward(.5,1)
-    m.right(.7,2)
-    m.left(.7,2)
-    m.backward(.5,0.5)
-    m.set_value([.6,.3],2)
-    m.set_value([-.6,-.3],2)
     button.ZumoButton().wait_for_press()
 
     bbcon = BBCON() #Lager aribator og motob selv
@@ -40,9 +32,9 @@ def main():
     bbcon.add_behavior(follow_line)
     bbcon.add_behavior(avoid_collison)
 
-    #while True:
-    #    print("kug")
-    #    bbcon.run_one_timesteps()
+    while True:
+       print("one timestep")
+       bbcon.run_one_timesteps()
 
 main()
 
