@@ -31,6 +31,7 @@ class Motob:
             motor.forward(val[1], val[2])
         elif val[0] == 'B':
             motor.backward(val[1], val[2])
+            motor.right(0.5,0.5)
         elif val[0] == 'R':
             motor.right(val[1], val[2])
         elif val[0] == 'L':
@@ -39,4 +40,13 @@ class Motob:
             motor.stop()
         elif val[0] == "T":
             motor.turn()
+        elif val[0] == "G":
+            motor.backward(0.5,0.5)
+            motor.right(1,0.5)
+            motor.backward(0.5,0.5)
+            motor.right(1,0.5)
+
+
+
+
 

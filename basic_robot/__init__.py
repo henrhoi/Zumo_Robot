@@ -1,6 +1,6 @@
 import SensorWrappers.zumo_button as button
 from sensob import IR_Sensob,Camera_Sensob,Ultrasonic_Sensob,Reflectance_Sensob
-from behavior import Follow_Line,Turn
+from behavior import Follow_Line,Turn,AvoidCollison,TakePicture
 from BBCON import BBCON
 from motors import Motors
 __authors__ = "Henrik Høiness og Kristoffer Gjerde"
@@ -8,7 +8,7 @@ __authors__ = "Henrik Høiness og Kristoffer Gjerde"
 def main():
 
     button.ZumoButton().wait_for_press()
-
+    print("william")
     bbcon = BBCON() #Lager aribator og motob selv
 
     #Sensob
@@ -19,20 +19,20 @@ def main():
 
     #bbcon.add_sensob(IR_Sensob)
     bbcon.add_sensob(Ultra)
-    #bbcon.add_sensob(Camera)
+    bbcon.add_sensob(Camera)
     bbcon.add_sensob(Reflect)
 
-    #Evt Motors
-    #Motor = Motors()
 
     #Behaviors
     follow_line = Follow_Line(bbcon,Reflect)
-    # turn_around = Turn(bbcon,IR_sensob)
+    avoid = AvoidCollison(bbcon,Ultra)
+    cam = TakePicture(bbcon,Camera)
 
     bbcon.add_behavior(follow_line)
-    # bbcon.add_behavior(turn_around)
+    bbcon.add_behavior(avoid)
+    bbcon.add_behavior(cam)
 
-    print(bbcon.behaviors)
+    print("Added behaviors:", bbcon.behaviors)
 
     while True:
        print("one timestep")

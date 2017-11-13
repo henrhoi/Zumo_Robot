@@ -19,7 +19,7 @@ class Arbitrator:
     #Velger den med størst prioritet
     def deterministisk_valg(self):
         if self.bbcon.active_behaviors == []:
-            return ["B",1,2]
+            return ["F",0.25,0.5]
         sorted_behaviors = sorted(self.bbcon.active_behaviors,key= lambda x:x.weight)
         return sorted_behaviors[-1].motor_recommendations
 
@@ -27,7 +27,7 @@ class Arbitrator:
     #Velger en behavior storkastisk, lager intervall, velger random.
     def storkastisk_valg(self):
         if self.bbcon.active_behaviors == []:
-            return ["B",1,2]
+            return ["B",0.25,0.5]
         liste = [behavior.weight for behavior in self.bbcon.active_behaviors]
         start = 0
         ranged = []
