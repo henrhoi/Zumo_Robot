@@ -99,23 +99,16 @@ class Follow_Line(Behavior):
         self.priority = 0.5
 
 
-class Avoid_Collison(Behavior):
+class Turn(Behavior):
     #Stopper opp hvis hinder er nærmere enn threshold
     #Bruker ultrasonic sensor
 
     def __init__(self,bbcon,sensobs):
         Behavior.__init__(self,bbcon,sensobs)
-        self.threshold = 10 #cm fra hinder
+        self.value = False
 
     def consider_activation(self):
-        less_than_threshold = self.sensobs.value < self.threshold
-
-        if less_than_threshold:
-            self.bbcon.activate_behavior(self)
-        else:
-            self.bbcon.deactivate_behavior(self)
-
-        return less_than_threshold
+        return self.sensobs.value
 
     def consider_deactivation(self):
         return not self.consider_activation()
