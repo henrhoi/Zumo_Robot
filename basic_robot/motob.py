@@ -14,6 +14,7 @@ class Motob:
         #value format [direction,speed,duration]
 
     def update(self, mr):
+        print("Update motob")
         # Receive a motor recommendation (mr), load into value, and operationalize!
         self.value = mr  # [direction, speed, duration]
         self.operationalize()
@@ -22,16 +23,18 @@ class Motob:
         # Convert a motor recommendation into on or more motor settings,
         # which is sent back to the corresponding motors
         print("Motob operationalize")
+
         motor = self.motor
-        for val in self.value:
-            if val[0] == 'F':
-                motor.forward(val[1], val[2])
-            elif val[0] == 'B':
-                motor.backward(val[1], val[2])
-            elif val[0] == 'R':
-                motor.right(val[1], val[2])
-            elif val[0] == 'L':
-                motor.left(val[1], val[2])
-            elif val[0] == "S":
-                motor.stop()
+        # for val in self.value:
+        val = self.value
+        if val[0] == 'F':
+            motor.forward(val[1], val[2])
+        elif val[0] == 'B':
+            motor.backward(val[1], val[2])
+        elif val[0] == 'R':
+            motor.right(val[1], val[2])
+        elif val[0] == 'L':
+            motor.left(val[1], val[2])
+        elif val[0] == "S":
+            motor.stop()
 

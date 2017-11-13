@@ -80,11 +80,9 @@ class Follow_Line(Behavior):
     def sense_and_act(self):
         #Hvis sensorene til venstre gir "mørkt" sving venstre
         #Hvis sensorene til høyre gir "mørkt" sving høyre
-        print(self.active_flag)
         sensor_array = self.sensobs.value
-        print(sensor_array)
         if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
-            print("kugggg")
+
             #Kjør framover
             self.motor_recommendations = ["F",0.5,1] #Move forward
         elif sensor_array[0] < self.threshold:
@@ -96,7 +94,6 @@ class Follow_Line(Behavior):
             self.motor_recommendations = ["R",0.25,1] #Move right
         else:
             self.motor_recommendations = ["F",0.25,1]
-            print("ooo")
             self.match_degree = 0.5
 
         self.priority = 0.5

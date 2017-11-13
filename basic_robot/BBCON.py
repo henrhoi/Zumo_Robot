@@ -35,6 +35,7 @@ class BBCON:
 
     # Oppdatere sensobs
     def update_sensobs(self):
+        print("Updating sensobs")
         for sensob in self.sensobs:
             sensob.update()
 
@@ -45,6 +46,7 @@ class BBCON:
 
     # Oppdatere behaviours
     def update_behaviors(self):
+        print("Updating behaviors")
         for behavior in self.behaviors:
             behavior.update()
 
@@ -52,18 +54,18 @@ class BBCON:
         self.motobs.update(action)
 
 
-    def run_one_timestep(self):
+    def run_one_timesteps(self):
         #Update sensobs
         self.update_sensobs()
 
         #Update behaviors
         self.update_behaviors()
 
-        print(self.active_behaviors)
+        print("Active behaviors:" + str(self.active_behaviors))
 
         #Call arbitrator.choose_action
         action = self.arbitrator.choose_action()
-        print(action)
+        print("Recommendation: " + str(action))
 
         #Update motobs
         self.update_motobs(action)

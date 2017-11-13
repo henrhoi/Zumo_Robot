@@ -18,6 +18,10 @@ from zumo_button import ZumoButton
 def dancer():
     ZumoButton().wait_for_press()
     m = Motors()
+
+    u = Ultrasonic()
+    print(u.getvalue())
+
     m.forward(.2,3)
     m.backward(.2,3)
     m.right(.5,3)
