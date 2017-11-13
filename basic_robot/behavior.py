@@ -55,7 +55,7 @@ class Follow_Line(Behavior):
 
     def __init__(self,bbcon,sensobs):
         Behavior.__init__(self,bbcon,sensobs)
-        self.threshold = 0.5 #Hvis sensoren er under denne verdien vil den returnere true når den consider_activation
+        self.threshold = 0.1 #Hvis sensoren er under denne verdien vil den returnere true når den consider_activation
 
     def consider_deactivation(self):
         return not self.consider_activation()
@@ -63,7 +63,7 @@ class Follow_Line(Behavior):
     def consider_activation(self):
         reflectance_sensor = self.sensobs #Hvis vi bare sender inn RS som sensob
         for sensor_verdi in reflectance_sensor.value: #Antar at de er oppdatert før denne kalles.
-            if sensor_verdi < self.threshold:
+            if sensor_verdi > self.threshold:
                 self.bbcon.activate_behavior(self)
                 return True
 
@@ -81,19 +81,19 @@ class Follow_Line(Behavior):
         #Hvis sensorene til venstre gir "mørkt" sving venstre
         #Hvis sensorene til høyre gir "mørkt" sving høyre
         sensor_array = self.sensobs.value
-        if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
+        if sensor_array[0] > self.threshold and sensor_array[5] > self.threshold:
 
             #Kjør framover
-            self.motor_recommendations = ["F",0.5,1] #Move forward
-        elif sensor_array[0] < self.threshold:
+            self.motor_recommendations = ["F",-1,2] #Move forward
+        elif sensor_array[0] > self.threshold:
             #Sving venstre
-            self.motor_recommendations = ["L",0.25,1] #Move left
+            self.motor_recommendations = ["R",0.7,2] #Move left
             self.match_degree = 0.9
-        elif sensor_array[5] < self.threshold:
+        elif sensor_array[5] > self.threshold:
             #Sving høyre
-            self.motor_recommendations = ["R",0.25,1] #Move right
+            self.motor_recommendations = ["L",0.7,2] #Move right
         else:
-            self.motor_recommendations = ["F",0.25,1]
+            self.motor_recommendations = ["F",0.7,1]
             self.match_degree = 0.5
 
         self.priority = 0.5
@@ -105,12 +105,10 @@ class Turn(Behavior):
 
     def __init__(self,bbcon,sensobs):
         Behavior.__init__(self,bbcon,sensobs)
-        self.value = False
 
     def consider_activation(self):
-        if self.sensobs.value:
-            self.bbcon.activate_behavior(self)
-            return True
+        self.bbcon.activate_behavior(self)
+        return True
 
     def consider_deactivation(self):
         return not self.consider_activation()

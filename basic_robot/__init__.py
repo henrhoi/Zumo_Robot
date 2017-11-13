@@ -19,18 +19,20 @@ def main():
 
     #bbcon.add_sensob(IR_Sensob)
     bbcon.add_sensob(Ultra)
-    bbcon.add_sensob(Camera)
+    #bbcon.add_sensob(Camera)
     bbcon.add_sensob(Reflect)
 
     #Evt Motors
     #Motor = Motors()
 
     #Behaviors
-    #follow_line = Follow_Line(bbcon,Reflect)
-    turn_around = Turn(bbcon,IR_Sensob)
+    follow_line = Follow_Line(bbcon,Reflect)
+    # turn_around = Turn(bbcon,IR_sensob)
 
-    #bbcon.add_behavior(follow_line)
-    bbcon.add_behavior(turn_around)
+    bbcon.add_behavior(follow_line)
+    # bbcon.add_behavior(turn_around)
+
+    print(bbcon.behaviors)
 
     while True:
        print("one timestep")

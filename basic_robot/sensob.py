@@ -40,7 +40,7 @@ class IR_Sensob(Sensob):
     def __init__(self):
         Sensob.__init__(self)
         self.IR = irproximity_sensor.IRProximitySensor()
-        self.value = None
+        self.value = False
 
     def update(self):
         # Value = True/False
