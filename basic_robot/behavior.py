@@ -55,7 +55,7 @@ class Follow_Line(Behavior):
 
     def __init__(self,bbcon,sensobs):
         Behavior.__init__(self,bbcon,sensobs)
-        self.threshold = 0.1 #Hvis sensoren er under denne verdien vil den returnere true når den consider_activation
+        self.threshold = 0.5 #Hvis sensoren er under denne verdien vil den returnere true når den consider_activation
 
     def consider_deactivation(self):
         return not self.consider_activation()
@@ -63,7 +63,7 @@ class Follow_Line(Behavior):
     def consider_activation(self):
         reflectance_sensor = self.sensobs #Hvis vi bare sender inn RS som sensob
         for sensor_verdi in reflectance_sensor.value: #Antar at de er oppdatert før denne kalles.
-            if sensor_verdi > self.threshold:
+            if sensor_verdi < self.threshold:
                 self.bbcon.activate_behavior(self)
                 return True
 
@@ -82,10 +82,7 @@ class Follow_Line(Behavior):
         #Hvis sensorene til høyre gir "mørkt" sving høyre
         sensor_array = self.sensobs.value
         if sensor_array[0] < self.threshold and sensor_array[5] < self.threshold:
-<<<<<<< HEAD
-=======
 
->>>>>>> b9e995b63a7497a2c3f9f109a863cb6a6e2b244f
             #Kjør framover
             self.motor_recommendations = ["F",0.5,1] #Move forward
         elif sensor_array[0] < self.threshold:
@@ -97,32 +94,21 @@ class Follow_Line(Behavior):
             self.motor_recommendations = ["R",0.25,1] #Move right
         else:
             self.motor_recommendations = ["F",0.25,1]
-<<<<<<< HEAD
-           self.match_degree = 0.5
-=======
             self.match_degree = 0.5
->>>>>>> b9e995b63a7497a2c3f9f109a863cb6a6e2b244f
 
         self.priority = 0.5
 
 
-class Avoid_Collison(Behavior):
+class Turn(Behavior):
     #Stopper opp hvis hinder er nærmere enn threshold
     #Bruker ultrasonic sensor
 
     def __init__(self,bbcon,sensobs):
         Behavior.__init__(self,bbcon,sensobs)
-        self.threshold = 10 #cm fra hinder
+        self.value = False
 
     def consider_activation(self):
-        less_than_threshold = self.sensobs.value < self.threshold
-
-        if less_than_threshold:
-            self.bbcon.activate_behavior(self)
-        else:
-            self.bbcon.deactivate_behavior(self)
-
-        return less_than_threshold
+        return self.sensobs.value
 
     def consider_deactivation(self):
         return not self.consider_activation()
