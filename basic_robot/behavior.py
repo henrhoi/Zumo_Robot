@@ -42,6 +42,11 @@ class Behavior:
         #Bruker sensob readings for å lage motor recommendations (og halt_requet?..)
         return
 
+    def __repr__(self):
+        return str(type(self))
+
+    def __str__(self):
+        return str(type(self))
 
 class Follow_Line(Behavior):
 

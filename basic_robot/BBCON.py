@@ -59,6 +59,8 @@ class BBCON:
         #Update behaviors
         self.update_behaviors()
 
+        print(self.active_behaviors)
+
         #Call arbitrator.choose_action
         action = self.arbitrator.choose_action()
         print(action)

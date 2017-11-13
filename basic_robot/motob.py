@@ -21,6 +21,7 @@ class Motob:
     def operationalize(self):
         # Convert a motor recommendation into on or more motor settings,
         # which is sent back to the corresponding motors
+        print("Motob operationalize")
         motor = self.motor
         for val in self.value:
             if val[0] == 'F':
