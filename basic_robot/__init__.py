@@ -1,6 +1,6 @@
 import SensorWrappers.zumo_button as button
 from sensob import IR_Sensob,Camera_Sensob,Ultrasonic_Sensob,Reflectance_Sensob
-from behavior import Follow_Line,Avoid_Collison
+from behavior import Follow_Line,Turn
 from BBCON import BBCON
 from motors import Motors
 __authors__ = "Henrik Høiness og Kristoffer Gjerde"
@@ -26,10 +26,10 @@ def main():
     #Motor = Motors()
 
     #Behaviors
-    follow_line = Follow_Line(bbcon,Reflect)
+    #follow_line = Follow_Line(bbcon,Reflect)
     turn_around = Turn(bbcon,IR_Sensob)
 
-    bbcon.add_behavior(follow_line)
+    #bbcon.add_behavior(follow_line)
     bbcon.add_behavior(turn_around)
 
     while True:
